@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DSM CTF</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="/static/script/jquery-3.2.1.min.js"></script>
+    <script src="/static/script/navigation.js"></script>
+    {% if alert != None %}
+    <script>alert("{{ alert }}");</script>
+    {% endif %}
+</head>
+
+<body>
+    <header id="header">
+        <div id="topbar">
+            <ul>
+                <li><a href="/index.html">DSM CTF</a></li>
+                <li><a href="/probs.html">probs</a></li>
+                <li><a href="/rank.html">Rank</a></li>
+                <li><a href="/auth.html">Auth</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                {% if s_username == None %}
+                <li class="user" id="register"><a href="/register">register</a></li>
+                <li class="user" id="login"><a href="/login">login</a></li>
+                {% else %}
+                <li class="user" id="logout"><a href="/logout">logout</a></li>
+                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
+                <li class="user" style="color: white;">{{ s_username }}</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="container">
+            <h1 id="DSM">DSM</h1>
+            <h1 id="CTF">CTF</h1> </div>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li></li>
+        </ul>
+    </nav>
+    <section class="section" id="Web">
+        <br><br>
+        <main class="main">
+            <div class="contents">
+                <h2>Users</h2>
+                <br><br>
+                <form method="post">
+                    <input type="text" style="width:60%;height:25px;" name="user" placeholder="Input User ID" autofocus>
+                    <input style="width:10%;height:25px;" type="submit" name="submit" value="GET">
+                    <input style="width:10%;height:25px;" type="submit" name="submit" value="User List">
+                    <br><br><hr><br><br>
+                    {% if ulist != None and ulist|length > 0 %}
+                    {% for u in ulist %}
+                    <br>{{ u }}
+                    {% endfor %}
+                    {% endif %}
+                    
+                    {% if user != None and user|length > 0 %}
+                    <br>
+                    <h2>{{ user["id"] }}</h2><br><br>
+                    <input type="hidden" name="id" value="{{ user["id"] }}">
+                    
+                    <h3>uid : {{ user["uid"] }}</h3><br><br><br>
+                    <input type="hidden" name="uid" value="{{ user["uid"] }}">
+                    
+                    <h3>admin</h3><br>
+                    <input type="number" style="width:50%;height:25px;" name="admin" value="{{ user["admin"] }}"><br><br>
+                    
+                    <h3>auth_token</h3><br>
+                    <input type="text" style="width:50%;height:25px;" name="auth_token" value="{{ user["auth_token"] }}"><br><br>
+                    
+                    <h3>nickname</h3><br>
+                    <input type="text" style="width:50%;height:25px;" name="nickname" value="{{ user["nickname"] }}"><br><br>
+                    
+                    <h3>email</h3><br>
+                    <input type="email" style="width:50%;height:25px;" name="email" value="{{ user["email"] }}"><br><br>
+                    
+                    <h3>org</h3><br>
+                    <input type="text" style="width:50%;height:25px;" name="org" value="{{ user["org"] }}"><br><br>
+                    
+                    <h3>message</h3><br>
+                    <textarea style="width:50%;height:25px;resize:vertical;" name="message">{{ user["message"] }}</textarea><br><br>
+                    
+                    <h3>score</h3><br>
+                    <input type="number" style="width:50%;height:25px;" name="score" value="{{ user["score"] }}"><br><br>
+                    
+                    <h3>solved</h3><br>
+                    <input type="text" style="width:50%;height:25px;" name="solved" value="{{ user["solved"] }}"><br><br>
+                    
+                    <h3>lastauth</h3><br>
+                    <input type="text" style="width:50%;height:25px;" name="lastauth" value="{{ user["lastauth"] }}"><br><br>
+                    
+                    <br>
+                    <input style="width:30%;" type="submit" value="apply" name="submit">
+                    <input style="width:30%;" type="submit" value="delete" name="submit">
+                    <br>
+                    {% endif %}
+                    <br><br><hr>
+                </form>
+            </div>
+        </main>
+        <br><br>
+    </section>
+    <footer id="footer">
+        <ul>
+            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
+            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
+        </ul>
+    </footer>
+</body>
+
+</html>

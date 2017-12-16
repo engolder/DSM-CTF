@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DSM CTF</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="/static/script/jquery-3.2.1.min.js"></script>
+    <script src="/static/script/navigation.js"></script>
+</head>
+
+<body class="index">
+    <header id="header">
+        <div id="topbar">
+            <ul>
+                <li><a href="/index.html">DSM CTF</a></li>
+                <li><a href="/probs.html">probs</a></li>
+                <li><a href="/rank.html">Rank</a></li>
+                <li><a href="/auth.html">Auth</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                {% if s_username == None %}
+                <li class="user" id="register"><a href="/register">register</a></li>
+                <li class="user" id="login"><a href="/login">login</a></li>
+                {% else %}
+                <li class="user" id="logout"><a href="/logout">logout</a></li>
+                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
+                <li class="user" style="color: white;">{{ s_username }}</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="container">
+            <h1 id="DSM">DSM</h1>
+            <h1 id="CTF">CTF</h1> </div>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li></li>
+        </ul>
+    </nav>
+    <main class="index">
+        <div class="contents">
+            <div class="main-title" style="text-align: center">
+                <h2>DSM Capture The Flag!</h2>
+                <h3>by Lapio Team</h3>
+                아래로 스크롤 하여 더 많은 정보를 얻으세요..!
+            </div><br><br><br>
+            <p class="description black">
+                DSM CTF에 오신것을 환영합니다.<br><br>
+                일정 : 2017-9-14 00:00:00  ~  2017-9-15 23:59:59<br>
+                대상 : 대덕 소프트웨어 마이스터 고등학교 1 ~ 2학년 학생(내부)<br>
+            </p>
+            <ul class="prize">
+                <div class="prize-title">
+                    상품
+                </div>
+                <li><div style="background-color:#ffc557">금상</div>1명<br>문화상품권 3만원</li>
+                <li><div style="background-color:#22c3ff">은상</div>2명<br>문화상품권 2만원</li>
+                <li><div style="background-color:#33be20">동상</div>3명<br>문화상품권 1만원<br></li>
+                <li><div style="background-color:#ff5656">special</div>랜덤 2명<br>문화상품권 5천원</li>
+                <br><br><br>
+                <p>
+                    종료 후 상위 10명은 <a href="mailto:sunghun7511@naver.com">sunghun7511@naver.com</a>로 문제 풀이 보고서를<br>
+                    작성한 뒤 보내주시면, 확인 후에 최종 순위를 확정한 뒤, 상품을 지급합니다.<br><br>
+                    (상품은 등록된 이메일을 통해 모바일 문화상품권으로 지급합니다.)<br>
+                    <br><br><br><br><br><br>
+                    1등 ~ 5등은 상위 등수부터 서적을 한권씩 고를 수 있습니다.<br><br><br>
+                    ┌─────────────[ 서적 목록 ]─────────────┐<br><br>
+                    1. 정석용의 열혈강의 TCP/IP 열헐 프로그래밍<br>
+                    2. Do it! 프런트엔드 웹 디자인 입문<br>
+                    3. 웹 해킹 입문<br>
+                    4. 뇌를 자극하는 파이썬3<br>
+                    5. CTF 정보보안 콘테스트 첼린지 북<br><br>
+                    └─────────────[ 서적 목록 ]─────────────┘<br>
+                </p>
+            </ul>
+            <center>
+                <br><br><br><br><br><br><br><br><br>
+                <h3>사이트 이용방법</h3><br>
+                로그인을 하신 뒤, <a href="/probs/">이곳</a>에 들어가시면 보안에 관련된 문제들이 있습니다.<br><br>
+                문제들을 풀게 되면, DSMCTF{문자열} 같은 형식을 가진 문자열이 나오게 되는데,<br><br>
+                이 문자열을 <a href="/auth">이곳</a>에 입력하시면 점수가 오르게 됩니다.<br><br>
+                <br><br><br><br>
+                <h3>베타테스터 (대회 참가 X)</h3><br>
+                김성훈(SHGroup) - Team Lapio<br>
+                박준현(M013) - Team Lapio<br>
+                김민규 - Team Lapio<br>
+                <br>
+                인상민(RISM) - 대덕 소프트웨어 마이스터 고등학교<br>
+                이*솔(P4B) - Team H4C<br>
+                <br>
+                베타테스터들에게 감사드립니다.
+                <br><br><br><br>
+            </center>
+            
+            <article class="article left-article artBg0">
+                <h3>CTF란?</h3><br>
+                CTF란, Capture The Flag 의 줄인말으로,<br>
+                정보보안(보호) 경쟁의 한 종류입니다.<br>
+                CTF는 Jeopardy 방식과, 공격과 방어 방식으로 나뉩니다.
+            </article>
+            <article class="article right-article artBg1">
+                먼저, Jeopardy 방식은 주최 측에서 정보보안과 관련된<br>
+                문제를 내고, 각 문제에 점수를 매긴 뒤,<br>
+                참가자들은 그 문제를 풀어 순위를 겨루는 방식입니다.<br>
+                <br>
+                다음으로, 공격과 방어 방식은, 팀마다 취약점이 존재하는<br>
+                서버를 준 뒤, 자신의 서버의 취약점을 고치고, 다른 팀의<br>
+                서버의 취약점을 공격하여 경쟁하는 방식입니다.
+            </article>
+            <article class="article left-article artBg2">
+                <br>
+                보통, 큰 대회의 본선에서는 공격과 방어 형식을 사용합니다.<br>
+                주로 대회에서 다루는 분야는 웹, 네트워크, 암호학,<br>
+                포너블, 리버싱 등이 있습니다.
+            </article>
+            <br><br><br><br><br>
+            <center><hr style="width: 200px; display: inline-block;"></center>
+            <article class="final-article">
+                이 대회의 목적은 참가자들이 실제 보안 대회에서 나오는<br>
+                문제들을 직접 자기 손으로 풀어봄으로써 보안에 대한<br>
+                흥미와 관심도를 높이는 것입니다.<br>
+            </article>
+            <center><hr style="width: 200px; display: inline-block;"> </center>
+        </div>
+    </main>
+    <footer id="footer">
+        <ul>
+            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
+            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
+        </ul>
+    </footer>
+</body>
+
+</html>

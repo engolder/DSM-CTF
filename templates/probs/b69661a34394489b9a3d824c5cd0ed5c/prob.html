@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>DSM CTF</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="/static/script/jquery-3.2.1.min.js"></script>
+    <script src="/static/script/navigation.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <div id="topbar">
+            <ul>
+                <li><a href="/index.html">DSM CTF</a></li>
+                <li><a href="/probs.html">probs</a></li>
+                <li><a href="/rank.html">Rank</a></li>
+                <li><a href="/auth.html">Auth</a></li>
+                <li><a href="/contact.html">Contact</a></li>
+                {% if s_username == None %}
+                <li class="user" id="register"><a href="/register">register</a></li>
+                <li class="user" id="login"><a href="/login">login</a></li>
+                {% else %}
+                <li class="user" id="logout"><a href="/logout">logout</a></li>
+                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
+                <li class="user" style="color: white;">{{ s_username }}</li>
+                {% endif %}
+            </ul>
+        </div>
+        <div id="container">
+            <h1 id="DSM">DSM</h1>
+            <h1 id="CTF">CTF</h1> </div>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li></li>
+        </ul>
+    </nav>
+    <section class="section" id="Web">
+        <br><br>
+        <main class="main">
+            <div class="contents">
+                <a href="./SHEncoder.zip">Download!</a>
+            </div>
+        </main>
+        <br><br>
+    </section>
+    <footer id="footer">
+        <ul>
+            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
+            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
+        </ul>
+    </footer>
+</body>
+
+</html>
