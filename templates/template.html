@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DSM CTF</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <script src="/static/script/jquery-3.2.1.min.js"></script>
-    <script src="/static/script/navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <script src="static/script/script.js"></script>
 </head>
-
 <body>
-    <header id="header">
-        <div id="topbar">
-            <ul>
-                <li><a href="/index.html">DSM CTF</a></li>
-                <li><a href="/probs.html">probs</a></li>
-                <li><a href="/rank.html">Rank</a></li>
-                <li><a href="/auth.html">Auth</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                {% if s_username == None %}
-                <li class="user" id="register"><a href="/register">register</a></li>
-                <li class="user" id="login"><a href="/login">login</a></li>
-                {% else %}
-                <li class="user" id="logout"><a href="/logout">logout</a></li>
-                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
-                <li class="user" style="color: white;">{{ s_username }}</li>
-                {% endif %}
-            </ul>
-        </div>
-        <div id="container">
-            <h1 id="DSM">DSM</h1>
-            <h1 id="CTF">CTF</h1> </div>
+    <nav class="sidenav">
+        <ul class="sidenavList">
+            <button class="sidenavCloseBtn pointer">&times;</button>
+            <li class="sidenavItem sidenavTitle">DSM CTF</li>
+            <li class="sidenavItem sidenavItemHover"><a href="/probs.html">Probs</a></li>
+            <li class="sidenavItem sidenavItemHover"><a href="/rank.html">Rank</a></li>
+            <li class="sidenavItem sidenavItemHover"><a href="/auth.html">Auth</a></li>
+            <li class="sidenavItem sidenavItemHover"><a href="/contact.html">Contact</a></li>
+            <br/>
+<!--                {% if s_username == None %}-->
+            <li class="sidenavItem sidenavItemHover"><a href="/register">Register</a></li>
+            <li class="sidenavItem sidenavItemHover"><a href="/login">Login</a></li>
+<!--
+            {% else %}
+            <li class="topbarItem right"><a href="/logout">Logout</a></li>
+            <li class="topbarItem right"><a href="/mypage">{{ s_username }}</a></li>
+            {% endif %}
+-->
+        </ul>
+    </nav>
+    <button class="sidenavOpenBtn">&#9776;</button>
+    
+    <header class="header">
     </header>
-    <nav id="nav">
+    <nav class="stickyNav">
         <ul>
             <li></li>
         </ul>
     </nav>
-    <section class="section" id="Web">
-        <br><br>
+    <section class="section">
         <main class="main">
             <div class="contents">
                 <h2>{{ title }}</h2><br>
@@ -49,12 +50,7 @@
         </main>
         <br><br>
     </section>
-    <footer id="footer">
-        <ul>
-            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
-            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
-        </ul>
+    <footer class="footer">
     </footer>
 </body>
-
 </html>
