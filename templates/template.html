@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DSM CTF</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
-    <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Shadows+Into+Light" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="static/css/style.css">
     <script src="static/script/script.js"></script>
 </head>
@@ -13,32 +13,39 @@
     <nav class="sidenav">
         <ul class="sidenavList">
             <button class="sidenavCloseBtn pointer">&times;</button>
-            <li class="sidenavItem sidenavTitle">DSM CTF</li>
-            <li class="sidenavItem sidenavItemHover"><a href="/probs.html">Probs</a></li>
-            <li class="sidenavItem sidenavItemHover"><a href="/rank.html">Rank</a></li>
-            <li class="sidenavItem sidenavItemHover"><a href="/auth.html">Auth</a></li>
-            <li class="sidenavItem sidenavItemHover"><a href="/contact.html">Contact</a></li>
+            <li class="sidenavLink sidenavTitle">DSM CTF</li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/probs.html">Probs</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/rank.html">Rank</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/auth.html">Auth</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/contact.html">Contact</a></li>
             <br/>
 <!--                {% if s_username == None %}-->
-            <li class="sidenavItem sidenavItemHover"><a href="/register">Register</a></li>
-            <li class="sidenavItem sidenavItemHover"><a href="/login">Login</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/login">Login</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/register">Register</a></li>
 <!--
             {% else %}
-            <li class="topbarItem right"><a href="/logout">Logout</a></li>
             <li class="topbarItem right"><a href="/mypage">{{ s_username }}</a></li>
+            <li class="topbarItem right"><a href="/logout">Logout</a></li>
             {% endif %}
 -->
         </ul>
     </nav>
-    <button class="sidenavOpenBtn">&#9776;</button>
-    
-    <header class="header">
-    </header>
+    <button class="sidenavOpenBtn pointer">&#9776;</button>
     <nav class="stickyNav">
-        <ul>
-            <li></li>
+        <span class="probsLink pointer">probs navigation</span>
+        <ul class="stickyNavList">
+            <li class="stickyNavItem"><a href="#web" class="probsLink">web</a></li>
+            <li class="stickyNavItem"><a href="#network" class="probsLink">network</a></li>
+            <li class="stickyNavItem"><a href="#pwnable" class="probsLink">pwnable</a></li>
+            <li class="stickyNavItem"><a href="#reversing" class="probsLink">reversing</a></li>
+            <li class="stickyNavItem"><a href="#forensic" class="probsLink">forensic</a></li>
+            <li class="stickyNavItem"><a href="#crypto" class="probsLink">crypto</a></li>
+            <li class="stickyNavItem"><a href="#programming" class="probsLink">programming</a></li>
+            <li class="stickyNavItem"><a href="#misc" class="probsLink">misc</a></li>
         </ul>
     </nav>
+    <header class="header">
+    </header>
     <section class="section">
         <main class="main">
             <div class="contents">

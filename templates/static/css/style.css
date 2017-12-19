@@ -1,10 +1,18 @@
 /* intializing providen style */
 
+/* font
+
+font-family: 'NanumSquare';
+font-family: 'Roboto', sans-serif;
+font-family: 'Shadows Into Light', cursive;
+
+*/
+
 * {
     margin: 0;
     padding: 0;
+    outline: none;
     box-sizing: border-box;
-    font-family: 'NanumSquare';
 }
 
 a {
@@ -29,21 +37,24 @@ ul {
 .pointer {
     cursor: pointer;
 }
-/* header style */
+
+/* sidebar style */
 
 .sidenav {
     background-color: rgba(0, 0, 0, 0.71);
     height: 100vh;
+    right: 0;
     position: fixed;
     z-index: 100;
+    font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
-    transition: .5s width;
+    transition: .4s width ease-in-out;
     
     /* changeable */
     width: 0;
 }
 
-.sidenav-open {
+.sidenav-active {
     width: 100vw;
 }
 
@@ -66,7 +77,7 @@ ul {
     width: 100vw;
 }
 
-.sidenavItem {
+.sidenavLink {
     font-size: 1.5rem;
     line-height: 2rem;
     display: block;
@@ -76,11 +87,11 @@ ul {
     color: white;
 }
 
-.sidenavItemHover {
+.sidenavLinkHover {
     transition: 0.2s background-color;
 }
 
-.sidenavItemHover:hover {
+.sidenavLinkHover:hover {
     font-weight: bolder;
     background-color: rgba(0, 0, 0, 0.33);
 }
@@ -91,5 +102,67 @@ ul {
     border-bottom: 2px solid white;
     width: 16rem;
     margin: 0 auto 3rem auto;
-    font-family: 'Pangolin', cursive;
+    font-family: 'Shadows Into Light', cursive;
+}
+
+/* sticky navigation */
+
+.stickyNav {
+    height: 2.5rem;
+    background-color: black;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.stickyNavList {
+    overflow-y: hidden;
+    transition: 0.3s height ease-in-out;
+    text-transform: uppercase;
+    
+    /* chageable */
+    height: 0;
+}
+
+.stickyNavList-active {
+    height: 20rem;
+}
+
+.sidenavOpenBtn {
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 11;
+    background-color: black;
+    color: white;
+    transition: 0.2s background-color;
+}
+
+.sidenavOpenBtn:hover {
+    background-color: #1f1f1f;
+}
+
+.sidenavOpenBtn:active {
+    border: none;
+}
+
+.probsLink {
+    color: white;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+    background-color: black;
+    transition: 0.2s background-color;
+    display: block;
+}
+
+.probsLink:hover {
+    background-color: #1f1f1f;
 }
