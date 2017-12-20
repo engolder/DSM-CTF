@@ -1,139 +1,80 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DSM CTF</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <script src="/static/script/jquery-3.2.1.min.js"></script>
-    <script src="/static/script/navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Shadows+Into+Light" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <script src="static/script/script.js"></script>
 </head>
-
 <body>
-    <header id="header">
-        <div id="topbar">
-            <ul>
-                <li><a href="/index.html">DSM CTF</a></li>
-                <li><a href="/probs.html">probs</a></li>
-                <li><a href="/rank.html">Rank</a></li>
-                <li><a href="/auth.html">Auth</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                {% if s_username == None %}
-                <li class="user" id="register"><a href="/register">register</a></li>
-                <li class="user" id="login"><a href="/login">login</a></li>
-                {% else %}
-                <li class="user" id="logout"><a href="/logout">logout</a></li>
-                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
-                <li class="user" style="color: white;">{{ s_username }}</li>
-                {% endif %}
-            </ul>
-        </div>
-        <div id="container">
-            <h1 id="DSM">DSM</h1>
-            <h1 id="CTF">CTF</h1> </div>
-    </header>
-    <nav id="nav">
-        <ul>
-            <li></li>
+    <nav class="sidenav">
+        <ul class="sidenavList">
+            <button class="sidenavCloseBtn pointer">&times;</button>
+            <li class="sidenavLink sidenavTitle">DSM CTF</li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/probs.html">Probs</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/rank.html">Rank</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/auth.html">Auth</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/contact.html">Contact</a></li>
+            <br/>
+<!--                {% if s_username == None %}-->
+            <li><a class="sidenavLink sidenavLinkHover" href="/login">Login</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/register">Register</a></li>
+<!--
+            {% else %}
+            <li class="topbarItem right"><a href="/mypage">{{ s_username }}</a></li>
+            <li class="topbarItem right"><a href="/logout">Logout</a></li>
+            {% endif %}
+-->
         </ul>
     </nav>
-    <section class="section">
-        <main class="main main-profile">
-            <div class="contents">
-                <form method="post">
-                    <h2>마이페이지</h2>
-                    <div>
-                        <label for="inputID">아이디</label>
-                        {% if heIsAdmin %}
-                        <div class="textbox" style="color:cornflowerblue">
-                            {{ username }}(관리자)
-                        </div>
-                        {% else %}
-                        <div class="textbox">
-                            {{ username }}
-                        </div>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <label for="inputEmail">이메일</label>
-                        <div class="textbox">
-                            {{ email }}
-                        </div>
-                    </div>
-                    <div>
-                        <label for="inputpw">닉네임</label>
-                        {% if username == s_userid or isAdmin %}
-                        <div class="inputbox">
-                            <input type="text" id="inputnick" name="inick" value="{{ nickname }}">
-                        </div>
-                        {% else %}
-                        <div class="textbox">
-                            {{ nickname }}
-                        </div>
-                        {% endif %}
-                    </div>
-                    <div>
-                        <label for="inputpwr">소속</label>
-                        {% if username == s_userid or isAdmin %}
-                        <div class="inputbox">
-                            <input type="text" id="inputgrp" name="igroup" value="{{ group }}">
-                        </div>
-                        {% else %}
-                        <div class="textbox">
-                            {{ group }}
-                        </div>
-                        {% endif %}
-                    </div>
-                    <div id="message">
-                        <label for="inputID">메세지</label>
-                        {% if username == s_userid or isAdmin %}
-                        <textarea class="messg" maxlength="100" name="imessage" placeholder="최대 100자까지 입력 가능">{{ message }}</textarea>
-                        {% else %}
-                        <div class="textbox">
-                            {{ message }}
-                        </div>
-                        {% endif %}
-                    </div><br>
-                    <div>
-                        <label for="inputemail">점수</label>
-                        <div class="textbox">
-                            {{ score }}
-                        </div>
-                    </div>
-                    <br><br><h3>해결한 문제</h3>
-                    {% if firstsolve != None %}
-                    <ul>
-                        <li id="frontli">{{ firstsolve }}</li>
-                        {% if clears != None %}
-                        {% for key in clears %}
-                        <li>{{ key }}</li>
-                        {% endfor %}
-                        {% endif %}
-                    </ul>
-                    {% else %}
-                    <ul><li id="frontli">없음</li></ul>
-                    {% endif %}
-                    <br><br><br>
-                    {% if username == s_userid and not isAdmin %}
-                    <div>
-                        <label for="inputpw">비밀번호(본인확인)</label>
-                        <div class="inputbox">
-                            <input type="password" name="ipasswd" id="inputpw"> </div>
-                    </div>
-                    {% endif %}
-                    {% if username == s_userid or isAdmin %}
-                    <input type="submit" id="submit" value="적용">
-                    {% endif %}
-                </form>
-            </div>
-        </main>
-    </section>
-    <footer id="footer">
-        <ul>
-            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
-            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
+    <button class="sidenavOpenBtn pointer">&#9776;</button>
+    <nav class="stickyNav">
+        <span class="probsLink pointer">probs navigation</span>
+        <ul class="stickyNavList">
+            <li class="stickyNavItem"><a href="#web" class="probsLink">web</a></li>
+            <li class="stickyNavItem"><a href="#network" class="probsLink">network</a></li>
+            <li class="stickyNavItem"><a href="#pwnable" class="probsLink">pwnable</a></li>
+            <li class="stickyNavItem"><a href="#reversing" class="probsLink">reversing</a></li>
+            <li class="stickyNavItem"><a href="#forensic" class="probsLink">forensic</a></li>
+            <li class="stickyNavItem"><a href="#crypto" class="probsLink">crypto</a></li>
+            <li class="stickyNavItem"><a href="#programming" class="probsLink">programming</a></li>
+            <li class="stickyNavItem"><a href="#misc" class="probsLink">misc</a></li>
         </ul>
+    </nav>
+    <header class="header">
+        <div class="designBox1">
+            <div class="designBox2">
+                <div class="designBox3">
+                    <h1 class="title">DSM CTF
+                        <span class="subtitle">team lapio</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+        <div class="cards alone">
+            <h2 class="cardsName">my profile</h2>
+            <div class="viewValue">ID</div>
+            <input type="text" class="inputBox" placeholder="nickname">
+            <input type="email" class="inputBox" placeholder="email">
+            <input type="text" class="inputBox" placeholder="school">
+            <textarea class="inputBox" placeholder="introduction"></textarea>
+            SCORE
+            <div class="viewValue"></div>
+            SOLVED PROBS
+            <ul class="solvedProbsList">
+                <li class="solvedProbsItem">prob</li>
+                <li class="solvedProbsItem">prob</li>
+                <li class="solvedProbsItem">prob</li>
+            </ul>
+            <input type="submit" class="submit pointer">
+        </div>
+    </section>
+    <footer class="footer">
     </footer>
 </body>
-
 </html>
