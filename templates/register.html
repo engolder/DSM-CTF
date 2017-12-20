@@ -1,109 +1,73 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DSM CTF</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <script src="/static/script/jquery-3.2.1.min.js"></script>
-    <script src="/static/script/navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Shadows+Into+Light" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <script src="static/script/script.js"></script>
 </head>
-
 <body>
-    <header id="header">
-        <div id="topbar">
-            <ul>
-                <li><a href="/index.html">DSM CTF</a></li>
-                <li><a href="/probs.html">probs</a></li>
-                <li><a href="/rank.html">Rank</a></li>
-                <li><a href="/auth.html">Auth</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                {% if s_username == None %}
-                <li class="user" id="register"><a href="/register">register</a></li>
-                <li class="user" id="login"><a href="/login">login</a></li>
-                {% else %}
-                <li class="user" id="logout"><a href="/logout">logout</a></li>
-                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
-                <li class="user" style="color: white;">{{ s_username }}</li>
-                {% endif %}
-            </ul>
-        </div>
-        <div id="container">
-            <h1 id="DSM">DSM</h1>
-            <h1 id="CTF">CTF</h1> </div>
-    </header>
-    <nav id="nav">
-        <ul>
-            <li></li>
+    <nav class="sidenav">
+        <ul class="sidenavList">
+            <button class="sidenavCloseBtn pointer">&times;</button>
+            <li class="sidenavLink sidenavTitle">DSM CTF</li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/probs.html">Probs</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/rank.html">Rank</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/auth.html">Auth</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/contact.html">Contact</a></li>
+            <br/>
+<!--                {% if s_username == None %}-->
+            <li><a class="sidenavLink sidenavLinkHover" href="/login">Login</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/register">Register</a></li>
+<!--
+            {% else %}
+            <li class="topbarItem right"><a href="/mypage">{{ s_username }}</a></li>
+            <li class="topbarItem right"><a href="/logout">Logout</a></li>
+            {% endif %}
+-->
         </ul>
     </nav>
-    <section class="section">
-        <main class="main main-register">
-            <div class="contents">
-                {% if mess != None %}
-                <center>
-                <br><br>
-                <h3 class="redcolor">{{ mess }}</h3>
-                <br></center>
-                {% endif %}
-                <form method="post" action="/register">
-                    <h2>Register<span>필수항목 *</span></h2>
-                    <div>
-                        <label for="inputID">아이디 *</label>
-                        <div class="inputbox">
-                            <input type="text" id="inputID" name="username">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="inputpw">비밀번호 *</label>
-                        <div class="inputbox">
-                            <input type="password" id="inputpw" name="password"> </div>
-                    </div>
-                    <div>
-                        <label for="inputpwr">비밀번호 재입력 *</label>
-                        <div class="inputbox">
-                            <input type="password" id="inputpwr" name="password_check"> </div>
-                    </div>
-                    <div>
-                        <label for="inputemail">이메일 *</label>
-                        <div class="inputbox">
-                            <input type="email" id="inputemail" name="email">
-                        </div>
-                    </div>
-                    <div>
-                        <label for="inputname">닉네임 *</label>
-                        <div class="inputbox">
-                            <input type="text" id="inputname" name="nickname">
-                         </div>
-                    </div>
-                    <div>
-                        <label for="inputgp">소속(학번, 이름)</label>
-                        <div class="inputbox">
-                            <input type="text" id="inputgp" name="group">
-                        </div>
-                        <p style="font-size:8px;">학번과 이름에 오류 또는 누락시, 수상에 불이익이 있을 수 있습니다.</p><br>
-                    </div>
-                    <div id="message">
-                        <label for="inputID">메세지</label>
-                        <div class="inputbox">
-                            <textarea maxlength="100" placeholder="최대 100자까지 입력 가능" name="message"></textarea>
-                        </div>
-                    </div>
-                    
-                    <p style="font-size:6px;color:cadetblue;">회원가입 버튼을 누르시게 되면 <a style="color: darkturquoise;" href="/static/accept.html">가입 약관 및 개인정보 약관</a>에 동의하는 것으로 간주됩니다.<br>해당 사이트는 SSL 기술이 적용되어있지 않습니다. 공개 Wifi등의 환경에서는 회원가입, 로그인 하지 말아주시기 바랍니다.<br>한 아이피당 하루 3회 요청이 가능합니다.</p>
-                    <br><br>
-                    <center> {{ recaptcha }} </center> <br>
-                    <input type="submit" id="submit" value="회원가입">
-                </form>
-            </div>
-        </main>
-    </section>
-    <footer id="footer">
-        <ul>
-            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
-            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
+    <button class="sidenavOpenBtn pointer">&#9776;</button>
+    <nav class="stickyNav">
+        <span class="probsLink pointer">probs navigation</span>
+        <ul class="stickyNavList">
+            <li class="stickyNavItem"><a href="#web" class="probsLink">web</a></li>
+            <li class="stickyNavItem"><a href="#network" class="probsLink">network</a></li>
+            <li class="stickyNavItem"><a href="#pwnable" class="probsLink">pwnable</a></li>
+            <li class="stickyNavItem"><a href="#reversing" class="probsLink">reversing</a></li>
+            <li class="stickyNavItem"><a href="#forensic" class="probsLink">forensic</a></li>
+            <li class="stickyNavItem"><a href="#crypto" class="probsLink">crypto</a></li>
+            <li class="stickyNavItem"><a href="#programming" class="probsLink">programming</a></li>
+            <li class="stickyNavItem"><a href="#misc" class="probsLink">misc</a></li>
         </ul>
+    </nav>
+    <header class="header">
+        <div class="designBox1">
+            <div class="designBox2">
+                <div class="designBox3">
+                    <h1 class="title">DSM CTF
+                        <span class="subtitle">team lapio</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+        <div class="cards alone">
+            <h2 class="cardsName">register</h2>
+            <input type="text" class="inputBox" placeholder="ID">
+            <input type="password" class="inputBox" placeholder="password">
+            <input type="password" class="inputBox" placeholder="confirm password">
+            <input type="text" class="inputBox" placeholder="nickname">
+            <input type="text" class="inputBox" placeholder="school">
+            <input type="email" class="inputBox" placeholder="email">
+            <input type="submit" class="submit pointer">
+        </div>
+    </section>
+    <footer class="footer">
     </footer>
 </body>
-
 </html>
