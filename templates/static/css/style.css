@@ -270,6 +270,7 @@ textarea {
     height: 5.5rem !important;
     resize: none;
     overflow-y: hidden;
+    font-family: inherit;
 }
 
 .viewValue {
