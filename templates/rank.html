@@ -1,96 +1,95 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DSM CTF</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <script src="/static/script/jquery-3.2.1.min.js"></script>
-    <script src="/static/script/navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Shadows+Into+Light" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <script src="static/script/script.js"></script>
 </head>
-
 <body>
-    <header id="header">
-        <div id="topbar">
-            <ul>
-                <li><a href="/index.html">DSM CTF</a></li>
-                <li><a href="/probs.html">probs</a></li>
-                <li><a href="/rank.html">Rank</a></li>
-                <li><a href="/auth.html">Auth</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                {% if s_username == None %}
-                <li class="user" id="register"><a href="/register">register</a></li>
-                <li class="user" id="login"><a href="/login">login</a></li>
-                {% else %}
-                <li class="user" id="logout"><a href="/logout">logout</a></li>
-                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
-                <li class="user" style="color: white;">{{ s_username }}</li>
-                {% endif %}
-            </ul>
-        </div>
-        <div id="container">
-            <h1 id="DSM">DSM</h1>
-            <h1 id="CTF">CTF</h1> </div>
-    </header>
-    <nav id="nav">
-        <ul>
-            <li></li>
+    <nav class="sidenav">
+        <ul class="sidenavList">
+            <button class="sidenavCloseBtn pointer">&times;</button>
+            <li class="sidenavLink sidenavTitle">DSM CTF</li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/probs.html">Probs</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/rank.html">Rank</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/auth.html">Auth</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/contact.html">Contact</a></li>
+            <br/>
+<!--                {% if s_username == None %}-->
+            <li><a class="sidenavLink sidenavLinkHover" href="/login">Login</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/register">Register</a></li>
+<!--
+            {% else %}
+            <li class="topbarItem right"><a href="/mypage">{{ s_username }}</a></li>
+            <li class="topbarItem right"><a href="/logout">Logout</a></li>
+            {% endif %}
+-->
         </ul>
     </nav>
-    <section class="section">
-        {% if not_open_mode %}
-        <br><br>
-        <div style="text-align: center;background: red; font-size: 20px; color: white; padding: 10px;">
-            현재 이 페이지는 공개되지 않는 상태입니다.
-        </div>
-        <br><br>
-        {% endif %}
-        <main class="main main-rank">
-            <div class="contents">
-                <h2>Rank</h2>
-                {% if ranks|length > 0 %}
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Nickname</th>
-                            <th>Score</th>
-                            <th>LastAuth</th>
-                            <th>Message</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for item in ranks %}
-                        {% if item != None %}
-                        <tr>
-                            {% if item['rank'] <= 6 %}
-                            <th class="ranknum">{{ item['rank'] }}</th>
-                            {% else %}
-                            <th>{{ item['rank'] }}</th>
-                            {% endif %}
-                            <td>{{ item['nickname'] }}</td>
-                            <td>{{ item['score'] }}</td>
-                            <td>{{ item['lastauth'] }}</td>
-                            <td>{{ item['message'] }}</td>
-                        </tr>
-                        {% endif %}
-                        {% endfor %}
-                    </tbody>
-                </table>
-                {% else %}
-                <br>
-                <p style="font-size: 15px; color: black; text-align: center;">아직 아무도 문제를 풀지 않았습니다.</p>
-                <br>
-                {% endif %}
-            </div>
-        </main>
-    </section>
-    <footer id="footer">
-        <ul>
-            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
-            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
+    <button class="sidenavOpenBtn pointer">&#9776;</button>
+    <nav class="stickyNav">
+        <span class="probsLink pointer">probs navigation</span>
+        <ul class="stickyNavList">
+            <li class="stickyNavItem"><a href="#web" class="probsLink">web</a></li>
+            <li class="stickyNavItem"><a href="#network" class="probsLink">network</a></li>
+            <li class="stickyNavItem"><a href="#pwnable" class="probsLink">pwnable</a></li>
+            <li class="stickyNavItem"><a href="#reversing" class="probsLink">reversing</a></li>
+            <li class="stickyNavItem"><a href="#forensic" class="probsLink">forensic</a></li>
+            <li class="stickyNavItem"><a href="#crypto" class="probsLink">crypto</a></li>
+            <li class="stickyNavItem"><a href="#programming" class="probsLink">programming</a></li>
+            <li class="stickyNavItem"><a href="#misc" class="probsLink">misc</a></li>
         </ul>
+    </nav>
+    <header class="header">
+        <div class="designBox1">
+            <div class="designBox2">
+                <div class="designBox3">
+                    <h1 class="title">DSM CTF
+                        <span class="subtitle">team lapio</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+        <div class="cards rankCon">
+            <table class="rankTable">
+                <thead class="rankHead">
+                    <th class="rankHeadCell">rank</th>
+                    <th class="rankHeadCell">name</th>
+                    <th class="rankHeadCell">score</th>
+                    <th class="rankHeadCell">last solve</th>
+                    <th class="rankHeadCell">INTRO</th>
+                </thead>
+                <tbody class="rankBody">
+                    <td class="rankBodyCell">1</td>
+                    <td class="rankBodyCell">name</td>
+                    <td class="rankBodyCell">score</td>
+                    <td class="rankBodyCell">prob</td>
+                    <td class="rankBodyCell">introduction</td>
+                </tbody>
+                <tbody class="rankBody">
+                    <td class="rankBodyCell">2</td>
+                    <td class="rankBodyCell">name</td>
+                    <td class="rankBodyCell">score</td>
+                    <td class="rankBodyCell">prob</td>
+                    <td class="rankBodyCell">introduction</td>
+                </tbody>
+                <tbody class="rankBody">
+                    <td class="rankBodyCell">3</td>
+                    <td class="rankBodyCell">name</td>
+                    <td class="rankBodyCell">score</td>
+                    <td class="rankBodyCell">prob</td>
+                    <td class="rankBodyCell">introduction</td>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <footer class="footer">
     </footer>
 </body>
-
 </html>

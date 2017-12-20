@@ -253,7 +253,6 @@ ul {
     border: none;
     border-bottom: 2px solid #313131;
     background-color: #efefef;
-    height: 2.5rem;
     font-size: 1rem;
     line-height: 1rem;
     padding: 0.75rem;
@@ -311,6 +310,37 @@ textarea {
 
 .submit:hover {
     background-color: #1f1f1f;
+}
+
+/* rank */
+
+.rankCon {
+    width: 100%;
+    margin: 1rem auto;
+    max-width: 50rem;
+    padding: 2rem;
+    text-align: left;
+    overflow-x: scroll;
+}
+
+.rankTable {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+
+.rankHead {
+}
+
+.rankHeadCell {
+    text-transform: uppercase;
+    padding: 0.5rem;
+}
+
+.rankBodyCell {
+    padding: 0.5rem;
+    border: 1px solid black;
+    background-color: #f0f0f0; 
 }
 
 /* footer */
