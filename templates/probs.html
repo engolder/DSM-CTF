@@ -1,395 +1,152 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DSM CTF</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    <script src="/static/script/jquery-3.2.1.min.js"></script>
-    <script src="/static/script/navigation.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/moonspam/NanumSquare/master/nanumsquare.css">
+    <link href="https://fonts.googleapis.com/css?family=Oswald|Roboto|Shadows+Into+Light" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <script src="static/script/probs.js"></script>
+    <script src="static/script/script.js"></script>
 </head>
-
-<body class="probs">
-    <header id="header">
-        <div id="topbar">
-            <ul>
-                <li><a href="/index.html">DSM CTF</a></li>
-                <li><a href="/probs.html">probs</a></li>
-                <li><a href="/rank.html">Rank</a></li>
-                <li><a href="/auth.html">Auth</a></li>
-                <li><a href="/contact.html">Contact</a></li>
-                {% if s_username == None %}
-                <li class="user" id="register"><a href="/register">register</a></li>
-                <li class="user" id="login"><a href="/login">login</a></li>
-                {% else %}
-                <li class="user" id="logout"><a href="/logout">logout</a></li>
-                <li class="user" id="mypage"><a href="/mypage">mypage</a></li>
-                <li class="user" style="color: white;">{{ s_username }}</li>
-                {% endif %}
-            </ul>
-        </div>
-        <div id="container">
-            <h1 id="DSM">DSM</h1>
-            <h1 id="CTF">CTF</h1> </div>
-    </header>
-    <a class="pnt" id="home" onclick="movescroll($(this))">header</a>
-    <nav id="nav">
-        <ul> <span>
-                <li><a href="#web" onclick="movescroll($(this))">Web</a></li>
-                <li><a href="#network" onclick="movescroll($(this))">Network</a></li>
-                <li><a href="#pwnable" onclick="movescroll($(this))">Pwnable</a></li>
-                <li><a href="#reversing" onclick="movescroll($(this))">Reversing</a></li>
-            </span> <span>
-                <li><a href="#forensic" onclick="movescroll($(this))">Forensic</a></li>
-                <li><a href="#crypto" onclick="movescroll($(this))">Crypto</a></li>
-                <li><a href="#programming" onclick="movescroll($(this))">Programming</a></li>
-                <li><a href="#misc" onclick="movescroll($(this))">Misc</a></li>
-            </span> </ul>
-    </nav>
-    <div class="colorbox-background"></div>
-    <section class="section" id="Web">
-        {% if not_open_mode %}
-        <br><br>
-        <div style="text-align: center;background: red; font-size: 20px; color: white; padding: 10px;">
-            현재 이 페이지는 공개되지 않는 상태입니다.
-        </div>
-        <br><br>
-        {% endif %}
-        <h2>Web</h2>
-        <main class="main">
-            <!--      한 블럭       -->
-            {% for item in web %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
+<body>
+    <nav class="sidenav">
+        <ul class="sidenavList">
+            <button class="sidenavCloseBtn pointer">&times;</button>
+            <li class="sidenavLink sidenavTitle">DSM CTF</li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/probs.html">Probs</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/rank.html">Rank</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/auth.html">Auth</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/contact.html">Contact</a></li>
+            <br/>
+<!--                {% if s_username == None %}-->
+            <li><a class="sidenavLink sidenavLinkHover" href="/login">Login</a></li>
+            <li><a class="sidenavLink sidenavLinkHover" href="/register">Register</a></li>
+<!--
             {% else %}
-            <div class="prob">
+            <li class="topbarItem right"><a href="/mypage">{{ s_username }}</a></li>
+            <li class="topbarItem right"><a href="/logout">Logout</a></li>
             {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <section class="section" id="Network">
-        <h2>Network</h2>
-        <main class="main">
-            {% for item in network %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
-            {% else %}
-            <div class="prob">
-            {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <section class="section" id="Pwnable">
-        <h2>Pwnable</h2>
-        <main class="main">
-            {% for item in pwnable %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
-            {% else %}
-            <div class="prob">
-            {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <section class="section" id="Reversing">
-        <h2>Reversing</h2>
-        <main class="main">
-            {% for item in reversing %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
-            {% else %}
-            <div class="prob">
-            {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <section class="section" id="Forensic">
-        <h2>Forensic</h2>
-        <main class="main">
-            {% for item in forensic %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
-            {% else %}
-            <div class="prob">
-            {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <section class="section" id="Crypto">
-        <h2>Crypto</h2>
-        <main class="main">
-            {% for item in crypto %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
-            {% else %}
-            <div class="prob">
-            {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <section class="section" id="Programming">
-        <h2>Programming</h2>
-        <main class="main">
-            {% for item in programming %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
-            {% else %}
-            <div class="prob">
-            {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <section class="section" id="Misc">
-        <h2>Misc</h2>
-        <main class="main">
-            {% for item in misc %}
-            {% if item["solved"] %}
-            <div class="solve">
-            {# </div> #}
-            {% else %}
-            <div class="prob">
-            {% endif %}
-                <a class="pnt">
-                    <h3><div class="div-table"><div class="div-table-cell">{{ item["title"] }}<br/>{{ item["score"] }}</div></div></h3>
-                </a>
-                {% if item["body"] != None %}
-                <div class="colorbox">
-                    <h4 class="colorbox-title"><strong>{{ item["score"] }}</strong> {{ item["title"] }}</h4>
-                    <p class="colorbox-des">{{ item["body"] }}</p>
-                    {% if item["firstsolve"]|length == 0 %}
-                    <article>
-                        <h5>Get the first blood..!</h5>
-                    </article>
-                    {% else %}
-                    <article>
-                        <h5>최초</h5>
-                        {% for item in item["firstsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    <article>
-                        <h5>최근</h5>
-                        {% for item in item["lastsolve"] %}
-                        <p>{{ item }}</p>
-                        {% endfor %}
-                    </article>
-                    {% endif %}
-                </div>
-                {% endif %}
-            </div>
-            {% endfor %}
-        </main>
-    </section>
-    <br><br><br>
-    <footer id="footer">
-        <ul>
-            <li id="sh">dev<br>SHGroup<br>sunghun7511@naver.com</li>
-            <li id="email">design<br>yjm<br>yunedoopea610@gmail.com</li>
+-->
         </ul>
+    </nav>
+    <div class="probsModalPlace">
+        <div class="overlay probsOverlay">
+            <div class="modal">
+                <button class="modalCloseBtn pointer">&times;</button>
+                <div class="probScore">score</div>
+                <h3 class="modalTitle">prob title</h3>
+                <div class="modalBody">
+                    <p class="probContent">prob content</p>
+                    <span class="smlFont">lastest solve</span>
+                    <p class="lastestSolve">nickname</p>
+                    <p class="lastestSolve">nickname</p>
+                    <p class="lastestSolve">nickname</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="sidenavOpenBtn pointer">&#9776;</button>
+    <nav class="stickyNav">
+        <span class="probsLink pointer">probs navigation</span>
+        <ul class="stickyNavList">
+            <li class="stickyNavItem"><a class="probsLink pointer">web</a></li>
+            <li class="stickyNavItem"><a class="probsLink pointer">network</a></li>
+            <li class="stickyNavItem"><a class="probsLink pointer">pwnable</a></li>
+            <li class="stickyNavItem"><a class="probsLink pointer">reversing</a></li>
+            <li class="stickyNavItem"><a class="probsLink pointer">forensic</a></li>
+            <li class="stickyNavItem"><a class="probsLink pointer">crypto</a></li>
+            <li class="stickyNavItem"><a class="probsLink pointer">programming</a></li>
+            <li class="stickyNavItem"><a class="probsLink pointer">misc</a></li>
+        </ul>
+    </nav>
+    <header class="header">
+        <div class="designBox1">
+            <div class="designBox2">
+                <div class="designBox3">
+                    <h1 class="title">DSM CTF
+                        <span class="subtitle">team lapio</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="section">
+        <div class="categories">
+            <h2 class="categoryName">web</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2 class="categoryName">network</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2 class="categoryName">pwnable</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2 class="categoryName">reversing</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2 class="categoryName">forensic</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2 class="categoryName">crypto</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2 class="categoryName">programming</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+        <div class="categories">
+            <h2 class="categoryName">misc</h2>
+            <div class="cards probs pointer">
+                <div class="probsImg">
+                    <h3 class="probsTitle">prob title</h3>
+                    <p class="probsScore">score</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
     </footer>
 </body>
-
 </html>

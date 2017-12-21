@@ -27,16 +27,89 @@ ul {
 
 /* util class */
 
-.left {
-    float: left;
-}
-
-.right {
-    float: right;
-}
-
 .pointer {
     cursor: pointer;
+}
+
+.smlFont {
+    font-size: 0.8em;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cards {
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+    padding: 1rem;
+    text-align: center;
+    margin: 1rem;
+    background-color: white;
+}
+
+.alone {
+    width: 100%;
+    margin: 1rem auto;
+    max-width: 30rem;
+    padding: 2rem;
+    text-align: left;
+}
+
+.cardsName {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.inputBox {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #313131;
+    background-color: #efefef;
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.75rem;
+    transition: 0.1s background-color;
+    margin-bottom: 1rem;
+}
+
+.inputBox:focus {
+    border-bottom: 2px solid #5574f7;
+    background-color: #c6cbdb;
+}
+
+.submit {
+    display: block;
+    margin: 0 auto;
+    background-color: #313131;
+    border: none;
+    border-radius: 2px;
+    width: 6rem;
+    height: 2rem;
+    color: white;
+    transition: 0.1s background-color;
+}
+
+.submit:hover {
+    background-color: #1f1f1f;
+}
+
+textarea {
+    height: 5.5rem !important;
+    resize: none;
+    overflow-y: hidden;
+    font-family: inherit;
+}
+
+.viewValue {
+    width: 100%;
+    background-color: #efefef;
+    height: 2.5rem;
+    font-size: 1rem;
+    line-height: 1rem;
+    padding: 0.75rem;
+    transition: 0.1s background-color;
+    margin-bottom: 1rem;
+    text-align: left;
 }
 
 /* sidebar style */
@@ -46,7 +119,7 @@ ul {
     height: 100vh;
     right: 0;
     position: fixed;
-    z-index: 100;
+    z-index: 20;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     transition: .4s width ease-in-out;
@@ -94,7 +167,7 @@ ul {
 
 .sidenavLinkHover:hover {
     font-weight: bolder;
-    background-color: rgba(0, 0, 0, 0.33);
+    background-color: black;
 }
 
 .sidenavTitle {
@@ -112,6 +185,8 @@ ul {
     height: 2.5rem;
     background-color: black;
     position: fixed;
+    top: 0;
+    left: 0;
     z-index: 10;
     width: 100%;
     font-family: 'Roboto', sans-serif;
@@ -141,13 +216,13 @@ ul {
     right: 0;
     top: 0;
     z-index: 11;
-    background-color: #000000;
+    background-color: #4e4e4e;
     color: white;
     transition: 0.2s background-color;
 }
 
 .sidenavOpenBtn:hover {
-    background-color: #1f1f1f;
+    background-color: black;
 }
 
 .sidenavOpenBtn:active {
@@ -166,7 +241,7 @@ ul {
 }
 
 .probsLink:hover {
-    background-color: #1f1f1f;
+    background-color: black;
 }
 
 /* header style */
@@ -217,71 +292,98 @@ ul {
     display: block;
 }
 
+/* modal */
+
+.probsModalPlace {
+    font-family: 'NanumSquare';
+}
+
+.overlay {
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.32);
+    width: 100vw;
+    height: 100vh;
+    padding: 4rem 2rem 4rem 1rem;
+    transition: 0.5s top;
+    
+    /* changeable */
+    top: -100vh;
+}
+
+.modal-on {
+    top:0;
+}
+
+.modal {
+    width: 100%;
+    height: 100%;
+    max-width: 40rem;
+    margin: 0 auto;
+    background-color: rgba(80, 217, 128, 0.86);
+    border-radius: 4px;
+    position: relative;
+}
+
+.modalCloseBtn {
+    color: white;
+    font-size: 3rem;
+    line-height: 2rem;
+    padding:1rem;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.probScore {
+    height: 1rem;
+    line-height: 1rem;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+.modalTitle {
+    width: 100%;
+    height: 3rem;
+    padding-top: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: white;
+    text-align: center;
+}
+
+.modalBody {
+    background-color: white;
+    width: 100%;
+    padding: 2rem;
+    height: calc(100% - 4rem);
+    font-size: 1.2rem;
+}
+
+.probContent {
+    height: calc(100% - 8.7rem);
+}
+
+.lastestSolve {
+    line-height: 1.2rem;
+    font-weight: bolder;
+    border-top: 1px solid #b5b5b5;
+    margin-top: 0.5rem;
+    padding-top: 0.8rem;
+    height: 2rem;
+}
+
 /* section */
 
 .section {
-    border-top: 5rem solid #313131;
+    border-top: 3rem solid #313131;
     padding: 5rem;
     font-family: 'Roboto', sans-serif;
-}
-
-.cards {
-    border: 1px solid #aaaaaa;
-    border-radius: 4px;
-    padding: 1rem;
-    text-align: center;
-    margin: 1rem;
-}
-
-.alone {
-    width: 100%;
-    margin: 1rem auto;
-    max-width: 30rem;
-    padding: 2rem;
-    text-align: left;
-}
-
-.cardsName {
-    text-transform: uppercase;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-.inputBox {
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid #313131;
-    background-color: #efefef;
-    font-size: 1rem;
-    line-height: 1rem;
-    padding: 0.75rem;
-    transition: 0.1s background-color;
-    margin-bottom: 1rem;
-}
-
-.inputBox:focus {
-    border-bottom: 2px solid #5574f7;
-    background-color: #c6cbdb;
-}
-
-textarea {
-    height: 5.5rem !important;
-    resize: none;
-    overflow-y: hidden;
-    font-family: inherit;
-}
-
-.viewValue {
-    width: 100%;
-    background-color: #efefef;
-    height: 2.5rem;
-    font-size: 1rem;
-    line-height: 1rem;
-    padding: 0.75rem;
-    transition: 0.1s background-color;
-    margin-bottom: 1rem;
-    text-align: left;
 }
 
 .solvedProbsList {
@@ -294,22 +396,6 @@ textarea {
     font-size: 1rem;
     line-height: 2rem;
     background-color: #efefef;
-}
-
-.submit {
-    display: block;
-    margin: 0 auto;
-    background-color: #313131;
-    border: none;
-    border-radius: 2px;
-    width: 6rem;
-    height: 2rem;
-    color: white;
-    transition: 0.1s background-color;
-}
-
-.submit:hover {
-    background-color: #1f1f1f;
 }
 
 /* rank */
@@ -341,6 +427,102 @@ textarea {
     padding: 0.5rem;
     border: 1px solid black;
     background-color: #f0f0f0; 
+}
+
+/* probs */
+
+.categoryName {
+    background: linear-gradient(to right, rgba(109, 216, 69, 0.5), white);
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin: 1rem;
+    color: white;
+}
+
+.probs {
+    width: 10rem;
+    height: 10rem;
+    padding: 1rem;
+    display: inline-block;
+    transition: 0.3s all;
+    background-color: white;
+}
+
+.probs:hover {
+    transform: translate(0, -1rem);
+    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.44);
+}
+
+.probs:active {
+    background-color: #d7daef;
+}
+
+.probsImg {
+    width: 100%;
+    height: 100%;
+    padding-top: 1rem;
+}
+
+.probsTitle {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.38);
+    color: white;
+    font-family: 'NanumSquare';
+    font-weight: 100;
+    height: 6rem;
+}
+
+.probsScore {
+    font-size: 1rem;
+    line-height: 1rem;
+    font-family: 'Roboto', sans-serif;
+    background-color: rgba(0, 0, 0, 0.69);
+    color: white;
+    height: 1rem;
+}
+
+/* probs img */
+
+#category-web .probsImg {
+    background: url(../img/web.png);
+    background-size: cover;
+}
+
+#category-network .probsImg{
+    background: url(../img/network.png);
+    background-size: cover;
+}
+
+#category-pwnable .probsImg{
+    background: url(../img/pwnable.png);
+    background-size: cover;
+}
+
+#category-reversing .probsImg{
+    background: url(../img/reversing.png);
+    background-size: cover;
+}
+
+#category-forensic .probsImg{
+    background: url(../img/forensic.png);
+    background-size: cover;
+}
+
+#category-crypto .probsImg{
+    background: url(../img/crypto.png);
+    background-size: cover;
+}
+
+#category-programming .probsImg{
+    background: url(../img/programming.png);
+    background-size: cover;
+}
+
+#category-misc .probsImg{
+    background: url(../img/misc.png);
+    background-size: cover;
 }
 
 /* footer */
