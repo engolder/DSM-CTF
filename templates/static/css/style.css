@@ -35,6 +35,10 @@ ul {
     font-weight: bolder;
 }
 
+.highlight {
+    background-color: rgba(80, 217, 128, 0.86);
+}
+
 .pointer {
     cursor: pointer;
 }
@@ -87,7 +91,7 @@ ul {
 
 .submit {
     display: block;
-    margin: 0 auto;
+    margin: 0.5rem auto;
     background-color: #313131;
     border: none;
     border-radius: 2px;
@@ -102,9 +106,7 @@ ul {
 }
 
 textarea {
-    height: 5.5rem !important;
     resize: none;
-    overflow-y: hidden;
     font-family: inherit;
 }
 
@@ -409,7 +411,7 @@ textarea {
 
 /* rank */
 
-.rankCon {
+.tableCon {
     width: 100%;
     margin: 1rem auto;
     max-width: 50rem;
@@ -418,21 +420,21 @@ textarea {
     overflow-x: scroll;
 }
 
-.rankTable {
+.table {
     border-collapse: collapse;
     width: 100%;
     text-align: center;
 }
 
-.rankHead {
+.tableHead {
 }
 
-.rankHeadCell {
+.tableHeadCell {
     text-transform: uppercase;
     padding: 0.5rem;
 }
 
-.rankBodyCell {
+.tableBodyCell {
     padding: 0.5rem;
     border: 1px solid black;
     background-color: #f0f0f0; 
@@ -538,6 +540,14 @@ textarea {
 #category-misc .probsImg{
     background: url(../img/misc.png);
     background-size: cover;
+}
+
+/*              admin             */
+
+.userDeletion {
+    width: 100%;
+    height: 100%;
+    font-weight: bolder;
 }
 
 /* footer */
