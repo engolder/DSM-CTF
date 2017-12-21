@@ -16,6 +16,10 @@ font-family: 'Oswald', sans-serif;
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -26,6 +30,10 @@ ul {
 }
 
 /* util class */
+
+.bold {
+    font-weight: bolder;
+}
 
 .pointer {
     cursor: pointer;
@@ -382,8 +390,9 @@ textarea {
 
 .section {
     border-top: 3rem solid #313131;
-    padding: 5rem;
+    padding: 5rem 1rem;
     font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
 .solvedProbsList {
@@ -431,13 +440,19 @@ textarea {
 
 /* probs */
 
+.categories {
+    max-width: 50rem;
+    margin: 0 auto;
+}
+
 .categoryName {
-    background: linear-gradient(to right, rgba(109, 216, 69, 0.5), white);
+    background: linear-gradient(to right, white, rgba(109, 216, 69, 0.5), white);
     padding: 0.5rem;
     font-size: 1.5rem;
     line-height: 1.5rem;
-    margin: 1rem;
-    color: white;
+    color: black;
+    max-width: 30rem;
+    margin: 1rem auto;
 }
 
 .probs {
@@ -529,8 +544,24 @@ textarea {
 
 .footer {
     width: 100%;
-    height: 10rem;
-    background-color: #a2a2a2;
+    background-color: #313131;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    padding: 2rem 0 3rem 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.separ {
+    text-align: left;
+    display: inline-block;
+    width: 20rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer a {
+    text-decoration: underline;
 }
 
 /* scroll bar style */
@@ -559,4 +590,18 @@ textarea {
 
 ::-webkit-scrollbar-thumb:active {
     background-color: #212121;
+}
+
+@media screen and (max-width : 30rem) {
+    
+    section {
+        padding: 5rem 0.5rem;
+    }
+    
+    .probs {
+        width: 8rem;
+        height: 8rem;
+        padding: 0;
+        margin: 0.5rem;
+    }
 }
