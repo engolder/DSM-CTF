@@ -20,31 +20,39 @@ window.onload = function() {
     
 //    navigation
     let probsLink = document.querySelectorAll("a.probsLink");
-    for(i = 0; i<probsLink.length; i++) {
-        probsLink[i].onclick = function() {
-            document.querySelector("#category-" + this.innerHTML).scrollIntoView({behavior: 'smooth'});
+    if(probsLink != null) {
+        for(i = 0; i<probsLink.length; i++) {
+            probsLink[i].onclick = function() {
+                document.querySelector("#category-" + this.innerHTML).scrollIntoView({behavior: 'smooth'});
+            }
         }
     }
     
 //    add id
     let categories = document.getElementsByClassName("categories");
-    for(i = 0; i< categories.length; i++) {
-        let categoryName = categories[i].getElementsByClassName("categoryName");
-        categories[i].id = "category-"+categoryName[0].innerHTML;
+    if(categories != null) {
+        for(i = 0; i< categories.length; i++) {
+            let categoryName = categories[i].getElementsByClassName("categoryName");
+            categories[i].id = "category-"+categoryName[0].innerHTML;
+        }
     }
     
 //    modal open
     let probs = document.getElementsByClassName("probs");
     let probsOverlay = document.getElementsByClassName("probsOverlay");
-    for(i = 0; i< probs.length; i++) {
-        probs[i].onclick = function() {
-            probsOverlay[0].classList.add("modal-on");
-        };
+    if(probs != null) {
+        for(i = 0; i< probs.length; i++) {
+            probs[i].onclick = function() {
+                probsOverlay[0].classList.add("modal-on");
+            };
+        }
     }
     
 //    modal close
     let modalCloseBtn = document.getElementsByClassName("modalCloseBtn");
-    modalCloseBtn[0].onclick = function() { probsOverlay[0].classList.remove("modal-on"); };
+    if(modalCloseBtn != null && modalCloseBtn[0] != null) {
+        modalCloseBtn[0].onclick = function() { probsOverlay[0].classList.remove("modal-on"); };
+    }
     
 //    admin user
    
